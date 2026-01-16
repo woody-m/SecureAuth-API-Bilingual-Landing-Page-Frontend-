@@ -1,0 +1,21 @@
+{
+    "brand_name": "SecureAuth",
+    "hero_title": "Autenticação segura pronta para usar em minutos",
+    "hero_subtitle": "API profissional com JWT, RBAC e rotas protegidas para desenvolvedores exigentes.",
+    "hero_cta": "Quero usar a SecureAuth API",
+    "problem_title": "O problema",
+    "problem_1": "Autenticação manual demorada e propensa a erros",
+    "problem_2": "Manter segurança e sessões é complexo",
+    "problem_3": "Projetos diferentes, o mesmo trabalho repetido",
+    "solution_title": "A solução",
+    "solution_text": "SecureAuth é uma API completa e modular com autenticação JWT, controle de acesso (RBAC) e rotas protegidas — tudo pronto para integrar ao seu projeto.",
+    "how_title": "Como funciona",
+    "how_1": "Integre a API em minutos",
+    "how_2": "Configure permissões e rotas protegidas",
+    "how_3": "Use autenticação segura pronta para produção",
+    "tech_title": "Tecnologias",
+    "about_title": "Sobre a criadora",
+    "about_text": "Desenvolvido por Bruna Siqueira Lopes, engenheira de software apaixonada por segurança e arquitetura limpa. O projeto SecureAuth nasceu da vontade de simplificar o login seguro para todos os devs.",
+    "cta_title": "Pronto para acelerar seu projeto?",
+    "cta_button": "Comece agora"
+}
