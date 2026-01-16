@@ -1,0 +1,266 @@
+/* ============================
+   🎨 Base & Reset
+============================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", Arial, sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+}
+
+/* ============================
+   🌈 CSS Variables
+============================ */
+:root {
+    --primary-color: #6c63ff;
+    --secondary-color: #4f46e5;
+    --text-color: #eaeaea;
+    --bg-color: #0f172a;
+    --section-bg: #1e293b;
+    --container-width: 1100px;
+    --radius: 8px;
+    --transition: 0.3s ease;
+}
+
+/* ============================
+   🧱 Layout Utilities
+============================ */
+.container {
+    width: 90%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+p {
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ============================
+   🧭 Header
+============================ */
+.header {
+    background-color: var(--section-bg);
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.language-switcher {
+    display: flex;
+    gap: 10px;
+}
+
+.lang-btn {
+    background: transparent;
+    color: #fff;
+    border: 1px solid var(--primary-color);
+    padding: 6px 10px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.lang-btn:hover {
+    background-color: var(--primary-color);
+}
+
+/* ============================
+   🦸 Hero Section
+============================ */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    text-align: center;
+    padding: 120px 20px;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* ============================
+   ⚠️ Problem Section
+============================ */
+.problem {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    text-align: left;
+}
+
+.problem__list li {
+    margin-bottom: 10px;
+}
+
+/* ============================
+   💡 Solution Section
+============================ */
+.solution {
+    background-color: var(--section-bg);
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* ============================
+   ⚙️ How It Works
+============================ */
+.how-it-works {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.how__steps {
+    counter-reset: step;
+    padding-left: 0;
+}
+
+.how__steps li {
+    counter-increment: step;
+    margin: 15px 0;
+    position: relative;
+    padding-left: 35px;
+}
+
+.how__steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--primary-color);
+    color: #fff;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 25px;
+}
+
+/* ============================
+   💻 Technologies
+============================ */
+.technologies {
+    background-color: var(--section-bg);
+    text-align: center;
+}
+
+.tech__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.tech__list li {
+    background-color: var(--bg-color);
+    padding: 10px 20px;
+    border-radius: var(--radius);
+}
+
+/* ============================
+   👩 About
+============================ */
+.about {
+    background-color: var(--bg-color);
+    text-align: center;
+}
+
+/* ============================
+   🚀 CTA Final
+============================ */
+.cta {
+    background-color: var(--primary-color);
+    text-align: center;
+    color: #fff;
+}
+
+.cta .btn {
+    background: #fff;
+    color: var(--primary-color);
+}
+
+.cta .btn:hover {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+/* ============================
+   📞 Footer
+============================ */
+.footer {
+    background-color: var(--section-bg);
+    text-align: center;
+    padding: 20px 0;
+    color: #aaa;
+}
+
+/* ============================
+   📱 Responsive Design
+============================ */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+
+    .tech__list {
+        flex-direction: column;
+    }
+}
