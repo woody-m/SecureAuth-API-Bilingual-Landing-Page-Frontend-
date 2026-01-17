@@ -7,10 +7,7 @@
     <meta name="description" content="SecureAuth API - Autenticação segura pronta para usar em minutos." />
     <title>SecureAuth API</title>
 
-    <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css" />
-
-    <!-- Favicon -->
     <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
 </head>
 
@@ -19,25 +16,31 @@
        🌍 Language Switcher
   ========================== -->
     <header class="header">
-        <div class="container header__container">
-            <h1 class="logo" data-key="brand_name">SecureAuth</h1>
-            <div class="language-switcher">
-                <button class="lang-btn" data-lang="pt">🇧🇷 PT</button>
-                <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
-            </div>
+        <div class="language-switcher">
+            <button class="lang-btn" data-lang="pt">🇧🇷 PT</button>
+            <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
         </div>
     </header>
 
     <!-- =======================
        🦸 Hero Section
   ========================== -->
-    <section id="hero" class="hero">
+    <section class="hero">
         <div class="container">
-            <h2 data-key="hero_title">Autenticação segura pronta para usar em minutos</h2>
-            <p data-key="hero_subtitle">
-                API profissional com JWT, RBAC e rotas protegidas para desenvolvedores exigentes.
+            <!-- HERO TITLE -->
+            <h2 class="hero-title">
+                <span data-key="hero_title_before"></span>
+                <span class="hero-highlight" data-key="hero_title_highlight"></span>
+            </h2>
+
+
+            <!-- HERO SUBTITLE (TYPEWRITER) -->
+            <p class="hero-subtitle">
+                <span class="typewriter-subtitle" data-key="hero_subtitle"></span>
             </p>
-            <a href="#" class="btn primary" data-key="hero_cta">Quero usar a SecureAuth API</a>
+
+            <!-- HERO CTA -->
+            <a href="javascript:void(0)" class="btn" data-key="hero_cta"></a>
         </div>
     </section>
 
@@ -46,12 +49,17 @@
   ========================== -->
     <section id="problem" class="section problem">
         <div class="container">
-            <h3 data-key="problem_title">O problema</h3>
-            <ul class="problem__list">
-                <li data-key="problem_1">Autenticação manual demorada e propensa a erros</li>
-                <li data-key="problem_2">Manter segurança e sessões é complexo</li>
-                <li data-key="problem_3">Projetos diferentes, o mesmo trabalho repetido</li>
+
+            <h2 class="section-title" data-key="problem_title">O problema</h2>
+
+
+            <ul class="problem-list">
+                <li class="problem-card" data-key="problem_1"></li>
+                <li class="problem-card" data-key="problem_2"></li>
+                <li class="problem-card" data-key="problem_3"></li>
+                <li class="problem-card highlight" data-key="problem_warning"></li>
             </ul>
+
         </div>
     </section>
 
@@ -60,11 +68,24 @@
   ========================== -->
     <section id="solution" class="section solution">
         <div class="container">
-            <h3 data-key="solution_title">A solução</h3>
-            <p data-key="solution_text">
-                SecureAuth é uma API completa e modular com autenticação JWT, controle de acesso (RBAC)
-                e rotas protegidas — tudo pronto para integrar ao seu projeto.
-            </p>
+
+            <h2 class="solution-title" data-key="solution_title"></h2>
+
+            <div class="solution-card">
+                <p class="solution-intro">
+                    <span class="solution-highlight">SecureAuth API</span>
+                    <span data-key="solution_text"></span>
+                </p>
+
+                <ul class="solution-list">
+                    <li data-key="solution_item_1"></li>
+                    <li data-key="solution_item_2"></li>
+                    <li data-key="solution_item_3"></li>
+                    <li data-key="solution_item_4"></li>
+                    <li data-key="solution_item_5"></li>
+                </ul>
+            </div>
+
         </div>
     </section>
 
@@ -73,52 +94,99 @@
   ========================== -->
     <section id="how" class="section how-it-works">
         <div class="container">
-            <h3 data-key="how_title">Como funciona</h3>
+            <h2 data-key="how_title"></h2>
             <ol class="how__steps">
-                <li data-key="how_1">Integre a API em minutos</li>
-                <li data-key="how_2">Configure permissões e rotas protegidas</li>
-                <li data-key="how_3">Use autenticação segura pronta para produção</li>
+                <li data-key="how_1"></li>
+                <li data-key="how_2"></li>
+                <li data-key="how_3"></li>
             </ol>
         </div>
     </section>
-
     <!-- =======================
-       💻 Tecnologias
-  ========================== -->
+     💻 Tecnologias
+========================== -->
     <section id="tech" class="section technologies">
         <div class="container">
-            <h3 data-key="tech_title">Tecnologias</h3>
+            <h2 data-key="tech_title"></h2>
+            <p class="section-subtitle" data-key="tech_subtitle"></p>
+
             <ul class="tech__list">
-                <li>Node.js</li>
-                <li>Express</li>
-                <li>JWT</li>
-                <li>Bcrypt</li>
-                <li>Arquitetura limpa</li>
+                <li class="tech-card">
+                    <strong>Node.js</strong>
+                    <span data-key="tech_node"></span>
+                </li>
+
+                <li class="tech-card">
+                    <strong>Express</strong>
+                    <span data-key="tech_express"></span>
+                </li>
+
+                <li class="tech-card">
+                    <strong>JWT</strong>
+                    <span data-key="tech_jwt"></span>
+                </li>
+
+                <li class="tech-card">
+                    <strong>bcrypt</strong>
+                    <span data-key="tech_bcrypt"></span>
+                </li>
+
+                <li class="tech-card">
+                    <strong data-key="tech_clean_title"></strong>
+                    <span data-key="tech_clean_desc"></span>
+                </li>
             </ul>
         </div>
     </section>
 
     <!-- =======================
-       👩 Sobre a Criadora
+       👩 Sobre
   ========================== -->
-    <section id="about" class="section about">
+    <section class="about-creator" id="about">
         <div class="container">
-            <h3 data-key="about_title">Sobre a criadora</h3>
-            <p data-key="about_text">
-                Desenvolvido por Bruna Siqueira Lopes, engenheira de software apaixonada por segurança e
-                arquitetura limpa. O projeto SecureAuth nasceu da vontade de simplificar o login seguro
-                para todos os devs.
-            </p>
+            <h2 data-key="about_title">Sobre a Criadora</h2>
+
+            <div class="about-card">
+                <p>
+                    <span data-key="about_before">Desenvolvido por</span>
+                    <span class="creator-name">Bruna Woodymila</span>,
+                    <span data-key="about_after">
+                        estudante de Engenharia de Software, com foco em backend, segurança e IA.
+                    </span>
+                </p>
+            </div>
         </div>
     </section>
 
     <!-- =======================
-       🚀 Call To Action Final
+       🚀 CTA Final
   ========================== -->
-    <section id="cta" class="section cta">
+    <section class="final-cta" id="cta">
         <div class="container">
-            <h3 data-key="cta_title">Pronto para acelerar seu projeto?</h3>
-            <a href="#" class="btn primary" data-key="cta_button">Comece agora</a>
+            <h2 data-key="cta_title">Ready to speed up your project?</h2>
+
+            <p class="cta-subtitle" data-key="cta_subtitle">
+                Stop wasting time implementing authentication from scratch
+            </p>
+
+            <button class="btn cta-button" data-key="cta_button">
+                I want to speed up my project now
+            </button>
+
+
+            <span class="cta-or" data-key="cta_or">or get in touch:</span>
+
+            <div class="cta-contacts">
+                <a href="#" class="contact-btn whatsapp" aria-label="WhatsApp">
+                    <span class="icon">💬</span>
+                    <span class="label" data-key="cta_whatsapp">WhatsApp</span>
+                </a>
+
+                <a href="mailto:bruna@exemplo.com" class="contact-btn email" aria-label="Email">
+                    <span class="icon">✉️</span>
+                    <span class="label" data-key="cta_email">E-mail</span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -126,14 +194,12 @@
        📞 Footer
   ========================== -->
     <footer class="footer">
-        <div class="container">
-            <p>© 2026 SecureAuth API</p>
-        </div>
+        <span>© 2026 SecureAuth API. All rights reserved.</span>
     </footer>
+
 
     <!-- Scripts -->
     <script src="js/lang.js"></script>
-    <script src="js/main.js"></script>
 </body>
 
 </html>

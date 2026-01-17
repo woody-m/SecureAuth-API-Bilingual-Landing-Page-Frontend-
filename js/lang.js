@@ -1,41 +1,58 @@
 /* ================================
-   🌍 Language Controller (lang.js)
-   Handles bilingual content (PT / EN)
-=================================== */
+   🌍 Language Controller
+   + Typewriter (CSS restart)
+================================ */
 
 const langButtons = document.querySelectorAll(".lang-btn");
-const defaultLang = localStorage.getItem("lang") || "pt";
 const translationPath = "translations/";
+const defaultLang = localStorage.getItem("lang") || "pt";
 
-/**
- * Loads the JSON file for the selected language
- * and applies the translation to all data-key elements.
- */
+/* 🔁 Reinicia animação CSS do typewriter */
+function restartTypewriter(el) {
+    el.classList.remove("typewriter-subtitle");
+    void el.offsetWidth; // força reflow (ESSENCIAL)
+    el.classList.add("typewriter-subtitle");
+}
+
 async function loadLanguage(lang) {
     try {
         const response = await fetch(`${translationPath}${lang}.json`);
         const translations = await response.json();
 
-        document.querySelectorAll("[data-key]").forEach((element) => {
-            const key = element.getAttribute("data-key");
-            if (translations[key]) {
-                element.textContent = translations[key];
+        document.querySelectorAll("[data-key]").forEach((el) => {
+            const key = el.getAttribute("data-key");
+            if (!translations[key]) return;
+
+            // Atualiza texto
+            el.textContent = translations[key];
+
+            // 🔥 Se for o subtítulo, reinicia o typewriter
+            if (el.classList.contains("typewriter-subtitle")) {
+                restartTypewriter(el);
             }
         });
 
+        // Estado visual do botão
+        langButtons.forEach(btn => {
+            btn.classList.toggle("active", btn.dataset.lang === lang);
+        });
+
         localStorage.setItem("lang", lang);
-    } catch (error) {
-        console.error("Error loading language file:", error);
+
+    } catch (err) {
+        console.error("Erro ao carregar idioma:", err);
     }
 }
 
-/* Handle language switch */
-langButtons.forEach((btn) => {
+// Clique nos botões
+langButtons.forEach(btn => {
+    btn.type = "button";
     btn.addEventListener("click", () => {
-        const selectedLang = btn.getAttribute("data-lang");
-        loadLanguage(selectedLang);
+        loadLanguage(btn.dataset.lang);
     });
 });
 
-/* Load saved/default language on startup */
-loadLanguage(defaultLang);
+// Inicialização
+document.addEventListener("DOMContentLoaded", () => {
+    loadLanguage(defaultLang);
+});

@@ -1,23 +1,33 @@
 /* ================================
-   ⚙️ Main Script (main.js)
-   General interactivity
+   ⚙️ main.js — scroll hard reset
 ================================ */
 
-document.addEventListener("DOMContentLoaded", () => {
-    // Smooth scroll for internal links
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", (e) => {
-            e.preventDefault();
-            const target = document.querySelector(anchor.getAttribute("href"));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 60,
-                    behavior: "smooth"
-                });
-            }
-        });
-    });
+// DESATIVA restauração automática do navegador
+if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+}
 
-    // Log ready
-    console.log("✅ SecureAuth Landing Page Loaded Successfully");
+// REMOVE qualquer hash da URL IMEDIATAMENTE
+(function () {
+    if (window.location.hash) {
+        history.replaceState(
+            null,
+            "",
+            window.location.pathname + window.location.search
+        );
+    }
+})();
+
+// FORÇA topo antes e depois do load
+window.scrollTo(0, 0);
+
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 0);
+});
+
+// GARANTE topo ao recarregar
+window.addEventListener("beforeunload", () => {
+    window.scrollTo(0, 0);
 });

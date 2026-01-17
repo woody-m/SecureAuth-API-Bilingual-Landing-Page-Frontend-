@@ -1,5 +1,5 @@
 /* ============================
-   🎨 Base & Reset
+   🎨 Reset & Base
 ============================ */
 * {
     margin: 0;
@@ -8,36 +8,52 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto !important;
 }
 
 body {
-    font-family: "Inter", Arial, sans-serif;
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    line-height: 1.6;
+    font-family: "Inter", system-ui, sans-serif;
+    color: #f3f3f8;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
 }
 
 /* ============================
-   🌈 CSS Variables
+   🌌 Global Background
 ============================ */
-:root {
-    --primary-color: #6c63ff;
-    --secondary-color: #4f46e5;
-    --text-color: #eaeaea;
-    --bg-color: #0f172a;
-    --section-bg: #1e293b;
-    --container-width: 1100px;
-    --radius: 8px;
-    --transition: 0.3s ease;
+body::before {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    background:
+        radial-gradient(circle at 30% 30%, #3b1b7a, transparent 40%),
+        radial-gradient(circle at 70% 60%, #1e40af, transparent 45%),
+        linear-gradient(180deg, #020617, #020617);
+    animation: bgMove 30s linear infinite;
+    z-index: -1;
+}
+
+@keyframes bgMove {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(10%, 10%);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
 }
 
 /* ============================
-   🧱 Layout Utilities
+   🧱 Layout
 ============================ */
 .container {
     width: 90%;
-    max-width: var(--container-width);
+    max-width: 1100px;
     margin: 0 auto;
 }
 
@@ -45,43 +61,23 @@ body {
     padding: 80px 0;
 }
 
-h1,
-h2,
-h3,
-h4 {
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-p {
-    color: var(--text-color);
-    margin-bottom: 20px;
-}
-
-ul {
-    list-style: none;
-}
-
 /* ============================
-   🧭 Header
+   🌍 Language Switcher
 ============================ */
 .header {
-    background-color: var(--section-bg);
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    z-index: 10;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.header__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.header.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
 }
 
-.logo {
-    color: #fff;
-    font-weight: 700;
-    font-size: 1.3rem;
-}
 
 .language-switcher {
     display: flex;
@@ -89,178 +85,765 @@ ul {
 }
 
 .lang-btn {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff;
-    border: 1px solid var(--primary-color);
-    padding: 6px 10px;
-    border-radius: var(--radius);
+    padding: 6px 12px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: var(--transition);
+    backdrop-filter: blur(8px);
+    transition: 0.3s;
 }
 
 .lang-btn:hover {
-    background-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
 }
 
 /* ============================
-   🦸 Hero Section
+   🦸 Hero Section (clean)
 ============================ */
+
 .hero {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: #fff;
     text-align: center;
-    padding: 120px 20px;
+    padding: clamp(140px, 20vh, 200px) 20px 120px;
 }
 
-.hero h2 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
+/* ============================
+   🏷️ Hero Title
+============================ */
+
+.hero-title {
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: #ffffff;
 }
 
-.hero p {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto 25px;
-}
-
-.btn {
+/* Gradiente APENAS no texto destacado */
+.hero-highlight {
     display: inline-block;
-    background: var(--primary-color);
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: var(--radius);
+    background: linear-gradient(90deg, #5298ee 0%, #805ee6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    font-weight: inherit;
+}
+
+/* ============================
+   📝 Hero Subtitle
+============================ */
+
+.hero-subtitle {
+    max-width: 720px;
+    margin: 0 auto 48px;
+    color: #e5e7eb;
+    font-size: 1.1rem;
+}
+
+/* ============================
+   🔘 Button
+============================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-weight: 600;
     text-decoration: none;
-    font-weight: bold;
-    transition: var(--transition);
+    color: #fff;
+    background: linear-gradient(90deg, #5b4fff, #9d4bff);
+    box-shadow: 0 0 20px rgba(157, 75, 255, 0.6);
+    transition: 0.3s;
 }
 
 .btn:hover {
-    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 0 32px rgba(157, 75, 255, 0.9);
 }
 
 /* ============================
    ⚠️ Problem Section
 ============================ */
+
 .problem {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    text-align: left;
+    padding: 96px 0;
 }
 
-.problem__list li {
-    margin-bottom: 10px;
+/* Título centralizado, limpo */
+.problem-title {
+    text-align: center;
+    font-size: clamp(1.9rem, 3vw, 2.2rem);
+    font-weight: 700;
+    margin-bottom: 56px;
+    color: #ffffff;
+}
+
+/* Lista */
+.problem-list {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Card */
+.problem-card {
+    position: relative;
+    padding: 18px 22px 18px 26px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+
+    color: #e5e7eb;
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+/* Barra vermelha fina (todos os cards) */
+.problem-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 14px;
+    bottom: 14px;
+    width: 2px;
+
+    background: #ef4444;
+    border-radius: 1px;
+}
+
+/* Card final (apenas um pouco mais forte, sem exagero) */
+.problem-card.highlight {
+    background: rgba(239, 68, 68, 0.06);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .problem {
+        padding: 72px 0;
+    }
+
+    .problem-card {
+        font-size: 0.9rem;
+    }
 }
 
 /* ============================
    💡 Solution Section
 ============================ */
+
 .solution {
-    background-color: var(--section-bg);
-    color: var(--text-color);
+    padding: 100px 0;
+}
+
+/* Título centralizado */
+.solution-title {
     text-align: center;
+    font-size: clamp(1.9rem, 3vw, 2.2rem);
+    font-weight: 700;
+    margin-bottom: 56px;
+    color: #ffffff;
+}
+
+/* Card principal */
+.solution-card {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 32px 36px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 14px;
+}
+
+/* Texto introdutório */
+.solution-intro {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #e5e7eb;
+    margin-bottom: 28px;
+}
+
+/* Gradiente apenas no nome SecureAuth API */
+.solution-highlight {
+    background: linear-gradient(90deg, #5298ee 0%, #805ee6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    margin-right: 4px;
 }
 
 /* ============================
-   ⚙️ How It Works
+   💡 Solution List with Checks
 ============================ */
-.how-it-works {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+
+.solution-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.how__steps {
-    counter-reset: step;
-    padding-left: 0;
-}
-
-.how__steps li {
-    counter-increment: step;
-    margin: 15px 0;
+.solution-list li {
     position: relative;
-    padding-left: 35px;
+    padding-left: 34px;
+    font-size: 0.95rem;
+    color: #e5e7eb;
+    line-height: 1.5;
 }
 
-.how__steps li::before {
-    content: counter(step);
+/* Check icon */
+.solution-list li::before {
+    content: "✓";
     position: absolute;
     left: 0;
-    top: 0;
-    background-color: var(--primary-color);
-    color: #fff;
-    width: 25px;
-    height: 25px;
+    top: 2px;
+
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #22c55e;
+    font-weight: 700;
+    font-size: 0.9rem;
+
     border-radius: 50%;
+    border: 1.5px solid rgba(34, 197, 94, 0.6);
+}
+
+
+@media (max-width: 768px) {
+    .solution {
+        padding: 80px 0;
+    }
+
+    .solution-card {
+        padding: 24px 22px;
+    }
+}
+
+.solution-list li {
+    font-size: 0.9rem;
+    padding-left: 30px;
+}
+
+.solution-list li::before {
+    top: 1px;
+}
+
+/* ============================
+   ⚙️ funciona 
+============================ */
+
+.how-it-works {
     text-align: center;
-    line-height: 25px;
+}
+
+.how-it-works h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.how-it-works::after {
+    content: "Simples e direto ao ponto";
+    display: block;
+    margin-bottom: 60px;
+    color: #9ca3af;
+    font-size: 1rem;
+}
+
+/* Steps container */
+.how__steps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    padding: 0;
+    margin: 0;
+}
+
+/* Step card */
+.how__steps li {
+    position: relative;
+    padding-top: 72px;
+    color: #e5e7eb;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Number */
+.how__steps li::before {
+    content: counter(step);
+    counter-increment: step;
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+    font-size: 1.2rem;
+
+    color: #a5b4fc;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.4);
+}
+
+/* Reset counter */
+.how__steps {
+    counter-reset: step;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+    .how__steps {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .how__steps li {
+        padding-top: 64px;
+    }
 }
 
 /* ============================
    💻 Technologies
 ============================ */
+
 .technologies {
-    background-color: var(--section-bg);
     text-align: center;
+    margin-top: 120px;
+}
+
+.technologies h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.technologies .section-subtitle {
+    color: #9ca3af;
+    font-size: 1rem;
+    margin-bottom: 56px;
+}
+
+/* Grid principal */
+.tech__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1000px;
+
+    justify-items: center;
+    /* 🔧 centraliza cards */
+}
+
+/* Card */
+.tech-card {
+    width: 100%;
+    max-width: 300px;
+    height: 150px;
+
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+
+    padding: 24px;
+    text-align: left;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+
+    backdrop-filter: blur(10px);
+
+    /* 🔧 cards estáticos */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    transform: none;
+    cursor: default;
+
+    /* 🔧 transição mínima */
+    transition: border-color 0.2s ease;
+}
+
+
+/* Título do card */
+.tech-card strong {
+    font-size: 1.05rem;
+    font-weight: 600;
+
+    background: linear-gradient(90deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Descrição */
+.tech-card span {
+    font-size: 0.9rem;
+    color: #cbd5f5;
+    line-height: 1.4;
+}
+
+/* Centraliza último card quando sobra (ex: 5 itens) */
+.tech-card:nth-last-child(1):nth-child(odd) {
+    grid-column: 2 / span 1;
+}
+
+/* ============================
+   📱 Responsive
+============================ */
+
+@media (max-width: 900px) {
+    .tech__list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tech-card:nth-last-child(1):nth-child(odd) {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .tech__list {
+        grid-template-columns: 1fr;
+    }
+
+    .tech-card {
+        height: auto;
+    }
+}
+
+/* ============================
+   👩‍💻 About the Creator
+============================ */
+
+.about-creator {
+    margin-top: 140px;
+    padding: 100px 24px;
+    text-align: center;
+
+    background: linear-gradient(180deg,
+            rgba(2, 6, 23, 0) 0%,
+            rgba(2, 6, 23, 0.6) 50%,
+            rgba(2, 6, 23, 0) 100%);
+}
+
+.about-creator h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.about-card {
+    max-width: 680px;
+    margin: 0 auto;
+
+    padding: 32px 40px;
+
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+
+    cursor: default;
+}
+
+.about-card p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+}
+
+.creator-name {
+    font-weight: 600;
+    display: inline-block;
+
+    background: linear-gradient(90deg,
+            #38bdf8,
+            #818cf8,
+            #a855f7);
+
+    background-size: 200% 200%;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    color: transparent;
+
+    /* ✨ leve brilho para destacar como na imagem */
+    text-shadow: 0 0 12px rgba(129, 140, 248, 0.25);
+}
+
+
+/* ============================
+   📱 Responsive
+============================ */
+
+@media (max-width: 600px) {
+    .about-creator {
+        padding: 80px 20px;
+    }
+
+    .about-card {
+        padding: 28px 24px;
+    }
+
+    .about-card p {
+        font-size: 1rem;
+    }
+}
+
+/* ============================
+   🚀 Final CTA
+============================ */
+
+.final-cta {
+    padding: 100px 24px 80px;
+    text-align: center;
+
+    /* 🔑 herda o fundo global */
+    background: transparent;
+}
+
+.final-cta h2 {
+    font-size: 2.2rem;
+    /* menor que hero */
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.cta-subtitle {
+    font-size: 1rem;
+    color: #cbd5e1;
+    margin-bottom: 40px;
+}
+
+/* Botão principal */
+.cta-button {
+    padding: 16px 36px;
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 14px;
+
+    background: linear-gradient(90deg, #3b82f6, #9333ea);
+    color: #fff;
+
+    box-shadow: 0 14px 36px rgba(99, 102, 241, 0.35);
+}
+
+.cta-button:hover {
+    filter: brightness(1.05);
+}
+
+/* Texto auxiliar */
+.cta-or {
+    display: block;
+    margin: 28px 0 18px;
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+/* Contatos */
+.cta-contacts {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 16px;
+
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    font-size: 0.85rem;
+    color: #e5e7eb;
+    text-decoration: none;
+
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.contact-btn .icon {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.btn {
+    cursor: pointer;
+    /* 👈 garante a mãozinha */
+}
+
+.btn:focus-visible {
+    outline: 2px solid rgba(157, 75, 255, 0.8);
+    outline-offset: 4px;
+}
+
+/* ============================
+   📱 Mobile – Ícones redondos
+============================ */
+
+@media (max-width: 640px) {
+    .cta-contacts {
+        gap: 14px;
+    }
+
+    .contact-btn {
+        width: 52px;
+        height: 52px;
+        padding: 0;
+
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    .contact-btn .label {
+        display: none;
+    }
+
+    .contact-btn .icon {
+        font-size: 1.25rem;
+    }
+}
+
+/* ============================
+   📦 Lists & Sections
+============================ */
+.problem__list,
+.tech__list,
+.how__steps {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.problem__list li,
+.how__steps li {
+    margin-bottom: 10px;
 }
 
 .tech__list {
     display: flex;
     flex-wrap: wrap;
+    gap: 12px;
     justify-content: center;
-    gap: 15px;
 }
 
 .tech__list li {
-    background-color: var(--bg-color);
-    padding: 10px 20px;
-    border-radius: var(--radius);
-}
-
-/* ============================
-   👩 About
-============================ */
-.about {
-    background-color: var(--bg-color);
-    text-align: center;
-}
-
-/* ============================
-   🚀 CTA Final
-============================ */
-.cta {
-    background-color: var(--primary-color);
-    text-align: center;
-    color: #fff;
-}
-
-.cta .btn {
-    background: #fff;
-    color: var(--primary-color);
-}
-
-.cta .btn:hover {
-    background-color: var(--secondary-color);
-    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.08);
 }
 
 /* ============================
    📞 Footer
 ============================ */
 .footer {
-    background-color: var(--section-bg);
+    padding: 30px 0;
     text-align: center;
-    padding: 20px 0;
     color: #aaa;
 }
 
 /* ============================
-   📱 Responsive Design
+   📱 Mobile
 ============================ */
 @media (max-width: 768px) {
-    .hero h2 {
-        font-size: 1.8rem;
+    .header {
+        top: 12px;
+        right: 16px;
+    }
+}
+
+/* ============================
+   ✨ Typewriter (CSS + JS friendly)
+============================ */
+
+.typewriter-subtitle {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #a770ff;
+    padding-right: 6px;
+
+    animation:
+        typing 2.8s steps(32, end),
+        blink 0.8s step-end infinite;
+}
+
+/* Digitação */
+@keyframes typing {
+    from {
+        width: 0;
     }
 
-    .tech__list {
-        flex-direction: column;
+    to {
+        width: 100%;
+    }
+}
+
+/* Cursor piscando */
+@keyframes blink {
+
+    0%,
+    100% {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: #a770ff;
+    }
+}
+
+/* 📱 Mobile: sem typewriter (UX melhor) */
+@media (max-width: 768px) {
+    .typewriter-subtitle {
+        white-space: normal;
+        border-right: none;
+        animation: fadeIn 0.6s ease;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
