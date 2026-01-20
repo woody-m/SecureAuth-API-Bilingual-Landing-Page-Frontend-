@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
   🇺🇸 English | 
 
@@ -288,4 +289,3 @@ landing-page/
 ├── index.html
 └── README.md
 ```
-

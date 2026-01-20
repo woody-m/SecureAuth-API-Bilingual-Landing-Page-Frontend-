@@ -1,33 +1,22 @@
 /* ================================
-   ⚙️ main.js — scroll hard reset
+   ⚙️ main.js — scroll reset (SAFE)
 ================================ */
 
-// DESATIVA restauração automática do navegador
-if ("scrollRestoration" in history) {
-    history.scrollRestoration = "manual";
+// Desativa restauração automática (Chrome + Safari)
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
 }
 
-// REMOVE qualquer hash da URL IMEDIATAMENTE
-(function () {
-    if (window.location.hash) {
-        history.replaceState(
-            null,
-            "",
-            window.location.pathname + window.location.search
-        );
-    }
-})();
+// Remove hash da URL (se existir)
+if (window.location.hash) {
+    history.replaceState(
+        null,
+        '',
+        window.location.pathname + window.location.search
+    );
+}
 
-// FORÇA topo antes e depois do load
-window.scrollTo(0, 0);
-
-window.addEventListener("load", () => {
-    setTimeout(() => {
-        window.scrollTo(0, 0);
-    }, 0);
-});
-
-// GARANTE topo ao recarregar
-window.addEventListener("beforeunload", () => {
+// Garante início no topo após renderização real
+window.addEventListener('DOMContentLoaded', () => {
     window.scrollTo(0, 0);
 });
