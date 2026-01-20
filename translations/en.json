@@ -10,7 +10,7 @@
     "problem_3": "Different projects, the same repeated work",
     "problem_warning": "👉 You lose time and take risks.",
     "solution_title": "The solution",
-    "solution_text": "SecureAuth is a complete and modular API with JWT authentication, RBAC access control, and protected routes — ready to integrate into your project.",
+    "solution_text": "SecureAuth is a complete and modular API with JWT authentication, RBAC access control, and protected routes ready to integrate into your project.",
     "solution_item_1": "Ready-to-use login and registration",
     "solution_item_2": "Secure JWT authentication",
     "solution_item_3": "Role-based access control (RBAC)",
