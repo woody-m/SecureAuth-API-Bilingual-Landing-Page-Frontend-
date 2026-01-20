@@ -1,5 +1,5 @@
 
-  🇺🇸 English | 🇧🇷 Português
+  🇺🇸 English | 
 
 
 # SecureAuth — Bilingual Landing Page (Frontend)
@@ -76,6 +76,32 @@ This approach improves:
 - Future language expansion  
 
 ---
+## 🧪 Testing & Validation
+
+This project was manually tested to ensure quality, responsiveness, and cross-browser compatibility.
+
+### Responsiveness
+- Mobile small (360–400px)
+- Mobile medium (375–414px)
+- Tablet (768px)
+- Notebook (1024px)
+- Desktop (1280px+)
+
+### Interactions
+- Hover states on desktop
+- Click feedback and responsiveness
+- External links (WhatsApp and Email)
+
+### Cross-browser
+- Chrome (desktop and mobile)
+- Safari (desktop and mobile)
+
+### Performance (Basic)
+- No critical console errors
+- All resources loading correctly (HTTP 200)
+- No render-blocking JavaScript
+
+---
 
 ## 🎨 Visual Structure
 
@@ -119,6 +145,7 @@ landing-page/
 ├── index.html
 └── README.md
 ````
+🇧🇷 Português | 
 
 # SecureAuth — Bilingual Landing Page (Frontend)
 
@@ -193,6 +220,31 @@ Essa abordagem facilita:
 - Inclusão de novos idiomas futuramente
 
 ---
+## 🧪 Testes & Validação
+
+Este projeto foi testado manualmente para garantir qualidade, responsividade e compatibilidade entre navegadores.
+
+### Responsividade
+- Mobile pequeno (360–400px)
+- Mobile médio (375–414px)
+- Tablet (768px)
+- Notebook (1024px)
+- Desktop (1280px+)
+
+### Interações
+- Estados de hover no desktop
+- Feedback visual e resposta ao clique
+- Links externos (WhatsApp e Email)
+
+### Compatibilidade entre navegadores
+- Chrome (desktop e mobile)
+- Safari (desktop e mobile)
+
+### Performance (Básica)
+- Nenhum erro crítico no Console
+- Todos os recursos carregando corretamente (HTTP 200)
+- JavaScript não bloqueia a renderização
+---
 
 ## 🎨 Estrutura Visual
 
@@ -236,3 +288,4 @@ landing-page/
 ├── index.html
 └── README.md
 ```
+
